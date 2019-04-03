@@ -1,24 +1,24 @@
-﻿@model Vidly.ViewModels.RandomMovieViewModel;
+﻿@model IEnumerable<Vidly.Models.Movie>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Movies</h2>
 
 <table class=“table table-bordered table-hover”>
-    <tr>
-        <th>Movies</th>
-    </tr>
-
-    @foreach (var movie in Model.Movies)
-    {
+    <thead>
         <tr>
-            <td>
-                @Html.ActionLink(movie.Name, "Details", new {id= movie.Id})
-            </td>
+            <th>Movie</th>
         </tr>
-    }
-
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Name</td>
+            </tr>
+        }
+    </tbody>
 </table>
